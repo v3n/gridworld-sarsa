@@ -17,11 +17,11 @@ class Sarsa
   end
   
   def to_s
-    @Map.map{|row| "|"+row.join("|")+"|" }.join("\n")
+    @Map.map{|row| row.join(" ") }.join("\n")
   end
 
   def to_csv
-    @Map.map{|row| row.join(" ") }.join("\n")
+    @Map.map{|row| row.join(",") }.join("\n")
   end
 
   # def [](coord)
@@ -31,13 +31,37 @@ class Sarsa
   # end
 
   def action_policy(coord)
-    return nil
+    actions = [
+      Coord.new(coord.x+1, coord.y)
+      Coord.new(coord.x-1, coord.y)
+      Coord.new(coord.x, coord.y+1)
+      Coord.new(coord.x, coord.y-1)
+    ]
+
+    actions.reject! { |c| 
+      if @Map[c.y][c.x].nil?
+        true
+      elsif @Map[c.y][c.x] == '*'
+        true
+      else
+        false
+      end
+    }
+
+    if actions.empty?
+      nil
+    else
+      actions.sort! { |a, b| 
+        @QTable[a.y][a.x] <=> @QTable[b.y][b.x]
+      }
+    end
+    actions[0]
   end
 
   def sarsa(coord)
     action = action_policy(coord)
     if action.nil?
-      return REWARD_VALUE
+      return ENDPOINT_VALUE
     end
     
     q_i = self.QTable[coord.y][coord.x]
