@@ -32,6 +32,8 @@ class Sarsa
   # end
 
   def action_policy(coord)
+    return nil if self.Map[coord.y][coord.x] == 'X'
+
     actions = [
       Coord.new(coord.x+1, coord.y)
       Coord.new(coord.x-1, coord.y)
@@ -49,14 +51,9 @@ class Sarsa
       end
     }
 
-    if actions.empty?
-      nil
-    else
-      actions.sort! { |a, b| 
-        @QTable[a.y][a.x] <=> @QTable[b.y][b.x]
-      }
-    end
-    actions[0]
+    actions.sort { |a, b| 
+      @QTable[a.y][a.x] <=> @QTable[b.y][b.x]
+    }[0]
   end
 
   def sarsa(coord)
