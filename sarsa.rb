@@ -14,6 +14,7 @@ class Sarsa
   def initialize(map, qtable)
     @Map = map
     @QTable = qtable
+    @Origin = @Map.each_index { |i| j = a[i].index 'O'; Coord.new(j,i) if j }
   end
   
   def to_s
