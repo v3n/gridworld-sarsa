@@ -40,7 +40,7 @@ class Sarsa
     ]
 
     actions.reject! { |c| 
-      if @Map[c.y][c.x].nil?
+      if @Map[c.y].nil? || @Map[c.y][c.x].nil?
         true
       elsif @Map[c.y][c.x] == '*'
         true
