@@ -64,7 +64,6 @@ class Sarsa
     
     q_i = self.QTable[coord.y][coord.x]
     
-    q_i + (LEARNING_RATE * (reward_value(action) + ))
     r_1 = reward_value(action)
     next_q = DISCOUT_FACTOR * sarsa(action)
 
