@@ -56,7 +56,7 @@ class Sarsa
     }[0]
   end
 
-  def sarsa(coord)
+  def sarsa(coord = self.Origin)
     action = action_policy(coord)
     if action.nil?
       return ENDPOINT_VALUE
