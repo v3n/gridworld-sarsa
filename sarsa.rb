@@ -72,7 +72,7 @@ class Sarsa
     
     q_i = self.QTable[coord.y][coord.x]
     
-    r_1 = reward_value(action)
+    r_1 = REWARD_VALUE
     next_q = DISCOUT_FACTOR * sarsa(action)
 
     self.QTable[coord.y][coord.x] =
@@ -81,5 +81,3 @@ class Sarsa
     # TODO: Log all qtable data here
   end
 end
-
-binding.pry
