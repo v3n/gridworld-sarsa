@@ -38,9 +38,9 @@ class Sarsa
     return nil if self.Map[coord.y][coord.x] == 'X'
 
     actions = [
-      Coord.new(coord.x+1, coord.y)
-      Coord.new(coord.x-1, coord.y)
-      Coord.new(coord.x, coord.y+1)
+      Coord.new(coord.x+1, coord.y),
+      Coord.new(coord.x-1, coord.y),
+      Coord.new(coord.x, coord.y+1),
       Coord.new(coord.x, coord.y-1)
     ]
 
