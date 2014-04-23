@@ -21,12 +21,7 @@ class Sarsa
   end
 
   def to_s
-    "+" + ("-" * 39) + "+\n+" +
-      @Map.map{|row| 
-        row.map { |val| 
-          val.nil? ? ' ' : val 
-        }.join(" ")
-      }.join("+\n+") + "\n" + ("-" * 40) + "+"
+    @Map.map{|row| row.join(" ") }.join("\n")
   end
 
   def to_csv
