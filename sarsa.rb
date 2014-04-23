@@ -19,9 +19,14 @@ class Sarsa
     @QTable = qtable
     @Origin = @Map.each_index { |i| j = self.Map[i].index 'O'; Coord.new(j,i) if j }
   end
-  
+
   def to_s
-    @Map.map{|row| row.join(" ") }.join("\n")
+    "+" + ("-" * 39) + "+\n+" +
+      @Map.map{|row| 
+        row.map { |val| 
+          val.nil? ? ' ' : val 
+        }.join(" ")
+      }.join("+\n+") + "\n" + ("-" * 40) + "+"
   end
 
   def to_csv
