@@ -6,6 +6,9 @@ require 'pry'
 Coord = Struct.new(:x, :y)
 
 class Sarsa
+  attr_accessor :Map, :QTable
+  attr_reader :Origin
+
   REWARD_VALUE = 0.1
   ENDPOINT_VALUE = 1.0
   DISCOUT_FACTOR = 0.5
