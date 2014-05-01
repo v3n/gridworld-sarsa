@@ -28,12 +28,6 @@ class Sarsa
     @Map.map{|row| row.join(",") }.join("\n")
   end
 
-  # def [](coord)
-  #   raise TypeError, "Coordinate-like argument expected" 
-  #     unless coord.respond_to? :x and coord.respond_to? :y
-  #   @Map.[coord.y][coord.x]
-  # end
-
   def action_policy(coord)
     return nil if self.Map[coord.y][coord.x] == 'X'
 
